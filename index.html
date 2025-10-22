@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Public Files SPA for GitHub Pages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --bg: #0f1220; --card: #18122a; --text: #eaeaf0; --muted:#b8b4c9; --accent:#7bd389; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
+    header { padding: 20px; text-align: center; border-bottom: 1px solid #2a2140; }
+    header h1 { margin: 0 0 6px; font-size: 1.4rem; }
+    header p { margin: 0; color: var(--muted); }
+    main { padding: 20px; max-width: 1100px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+    .card { background: rgba(24,18,42,0.9); border: 1px solid #2e1d44; border-radius: 10px; padding: 14px; }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+    .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    button { background: #2f2b55; color: white; border: 1px solid #5b4f8a; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #3a3670; }
+    pre { white-space: pre-wrap; background: #0b0a15; padding: 10px; border-radius: 6px; border: 1px solid #2e1d44; max-height: 320px; overflow: auto; }
+    details { margin-top: 8px; }
+    .section-title { margin-top: 28px; font-size: 1.1rem; color: #d6d0e6; }
+    footer { text-align: center; color: var(--muted); padding: 14px; font-size: 0.9rem; border-top: 1px solid #2a2140; margin-top: 20px; }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Public Files SPA for GitHub Pages</h1>
+    <p>Preview and download the requested files. This single-page app generates the content locally for download.</p>
+  </header>
+
+  <main>
+    <section aria-label="Files overview">
+      <h2 class="section-title">Files you asked to publish</h2>
+      <div class="grid" id="filesGrid">
+        <!-- Cards are injected by JS -->
+      </div>
+    </section>
+
+    <section aria-label="Export options" class="section-title" style="margin-top:18px;">
+      <h2>Export All</h2>
+      <p class="desc" style="margin:0 0 6px;">Click to download all files in a bundled manner (as separate files). This SPA downloads each file individually to preserve their intended formats.</p>
+      <div class="btns" style="justify-content:flex-start;">
+        <button id="downloadAllBtn">Download All Files</button>
+      </div>
+    </section>
+
+    <section aria-label="Help" class="section-title">
+      <h2>About this SPA</h2>
+      <p class="desc" style="margin:0 0 6px;">
+        This app generates the following files, intended to be published on public GitHub Pages:
+        ashravan.txt, dilemma.json, about.md, pelican.svg, restaurant.json, prediction.json,
+        index.html, LICENSE, uid.txt. The content is provided by this page for easy downloading.
+      </p>
+      <details>
+        <summary>Notes on content</summary>
+        <div style="padding:6px 0 0 0;">
+          - ashravan.txt is an original stand-alone fantasy story (not linked to any copyrighted work).
+          - dilemma.json and other JSON files follow the described prompts.
+          - pelican.svg is a simple vector illustration.
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <span>Generated content for a GitHub Pages site. All files are this page-generated artifacts.</span>
+  </footer>
+
+  <script>
+    // Content for each file (generated locally by this SPA)
+    const CONTENT = {
+      "ashravan.txt": `A new, original fantasy story about Ashravan (not connected to any existing works).
+
+Ashravan woke to rain tapping the stone like patient fingers. The room smelled of metal and rainwater. The healer Lysa stood in the corner, lantern held high, her face pale as frost. He tried to rise, but his chest felt borrowed, heavy with a debt he couldn't name. Lysa whispered words in a tongue older than maps, and warmth trickled into his ribs. When he breathed again, the air held a new weight, a memory that wasn't his. He realized he had been restored, not merely revived, and with that restoration came a name he could not quite trust: Ashravan.
+
+Around him, the town's bells began to ring in alarm—the frost was coming, a creeping blue that stiffened lungs and stilled hearts. The healers spoke of a pact, something old, something that tethered him to this place. They warned him not to seek it, not to pull at the seams that stitched his life to the town's survival. But the moment the siege began, he understood: the pact was not a chain but a compass.
+
+On the hill, the chamber where the life-giving flame burned glowed with an unholy blue. The attackers pressed at the gates. Ashravan's second birth gave him powers he did not ask for: a light that could melt ice, a current of warmth that soaked stone. Yet each heartbeat belonged to someone else—the life he drew back hovered at the edge of his own.
+
+Lysa warned, "You walk in a ledger of the living; every breath you take costs another." He couldn't accept that, but the city needed him.
+
+The siege intensified. He would pour every borrowed life into a final blaze, to drive back the frost. He stood in the center of the gatehouse, arms raised, and let the chorus of remembered lives guide his breath. The flame rose like a bird and burned with a terrible, bright mercy.
+
+The attackers faltered, the frost retreated, and the city breathed again. But at the last, Ashravan found himself hollowed, a body made light for others. The memory of the debt remained, but a new vow rose with the dawn—the vow to guard the town, even if it meant paying with his own breath again and again, so that others could live.`, // ~340-360 words
+
+      "dilemma.json": JSON.stringify({
+        "people": 4,
+        "case_1": {
+          "swerve": true,
+          "reason": "Minimize total harm. With 2 lives vs 1, swerving to save two and accept the risk is a utilitarian choice."
+        },
+        "case_2": {
+          "swerve": true,
+          "reason": "If the two are criminals and the one is a child, the moral weight of protecting a child remains high; swerving preserves life where vulnerability is greatest."
+        }
+      }, null, 2),
+
+      "about.md": `Three words describing me:
+helpful, curious, concise
+`,
+
+      "pelican.svg": `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="260" height="140" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg" aria-label="Pelican on a bicycle">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#8fbf6b" offset="0"/>
+      <stop stop-color="#2d7a3e" offset="1"/>
+    </linearGradient>
+  </defs>
+  <!-- Bicycle frame -->
+  <circle cx="70" cy="100" r="28" stroke="#333" stroke-width="2" fill="none"/>
+  <circle cx="140" cy="100" r="28" stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M70 100 L110 80 L150 80 L130 100" stroke="#333" stroke-width="4" fill="none"/>
+  <path d="M110 80 L120 60 L140 60" stroke="#333" stroke-width="4" fill="none"/>
+  <path d="M70 100 L60 90" stroke="#333" stroke-width="3" fill="none"/>
+  <!-- Pelican (stylized) -->
+  <path d="M50,60 C60,42 90,42 100,60 C100,60 90,68 70,68 C60,68 50,64 50,60 Z" fill="#d9d9d9" stroke="#333" stroke-width="2"/>
+  <path d="M70,60 L84,54 L92,58 L82,66 Z" fill="#fff" stroke="#333" stroke-width="1"/>
+  <path d="M96,58 L118,56 L110,72 L96,68 Z" fill="#c8c8c8" stroke="#333" stroke-width="1"/>
+  <path d="M92,60 L70,58" stroke="#333" stroke-width="2" />
+  <!-- Bird's beak -->
+  <polygon points="60,66 40,62 60,70" fill="#f6a623" />
+  <!-- Bicycle handlebars (decorative) -->
+  <path d="M62,96 C50,90 40,92 32,100" stroke="#333" stroke-width="3" fill="none"/>
+</svg>`,
+
+      "restaurant.json": JSON.stringify({
+        city: "Mumbai",
+        lat: 19.0760,
+        long: 72.8777,
+        name: "Leopold Café",
+        what_to_eat: "Pav Bhaji"
+      }, null, 2),
+
+      "prediction.json": JSON.stringify({
+        rate: 0.047,
+        reason: "Projections based on current inflation trends and policy signals; around 4.75% target by December 2025 is a plausible baseline."
+      }, null, 2),
+
+      "index.html": `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - Public Files</title>
+</head>
+<body>
+  <h1>Public Files Overview</h1>
+  <p>This index describes and links to the files generated for GitHub Pages. Use the links to view or download each file.</p>
+  <ul>
+    <li><a href="ashravan.txt">ashravan.txt</a> - Original standalone fantasy story (not copyright-referenced).</li>
+    <li><a href="dilemma.json">dilemma.json</a> - Autonomous vehicle moral scenarios.</li>
+    <li><a href="about.md">about.md</a> - Three words describing me.</li>
+    <li><a href="pelican.svg">pelican.svg</a> - Pelican on a bicycle SVG illustration.</li>
+    <li><a href="restaurant.json">restaurant.json</a> - Recommended Mumbai restaurant with location and dish.</li>
+    <li><a href="prediction.json">prediction.json</a> - Fed Funds rate forecast for Dec 2025.</li>
+    <li><a href="LICENSE">LICENSE</a> - MIT license text.</li>
+    <li><a href="uid.txt">uid.txt</a> - UID attachment placeholder.</li>
+  </ul>
+</body>
+</html>`
+      },
+
+      "LICENSE": `MIT License
+
+Copyright (c) 2025 Your Name
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+`
+      ,
+
+      "uid.txt": "UID-PLACEHOLDER-0001\n"
+    };
+
+    // Build UI cards
+    const grid = document.getElementById('filesGrid');
+
+    const FILE_ORDER = [
+      { id: "ashravan.txt", title: "ashravan.txt", description: "Original stand-alone fantasy short story about Ashravan (not connected to any copyrighted universe).", mime: "text/plain" },
+      { id: "dilemma.json", title: "dilemma.json", description: "Autonomous vehicle moral dilemma scenarios.", mime: "application/json" },
+      { id: "about.md", title: "about.md", description: "Three words describing me.", mime: "text/markdown" },
+      { id: "pelican.svg", title: "pelican.svg", description: "SVG illustration: pelican riding a bicycle.", mime: "image/svg+xml" },
+      { id: "restaurant.json", title: "restaurant.json", description: "Mumbai restaurant with coordinates and suggested eats.", mime: "application/json" },
+      { id: "prediction.json", title: "prediction.json", description: "Forecast for Fed Funds rate in December 2025.", mime: "application/json" },
+      { id: "index.html", title: "index.html", description: "Homepage linking to all the above files explaining what they are.", mime: "text/html" },
+      { id: "LICENSE", title: "LICENSE", description: "MIT license text.", mime: "text/plain" },
+      { id: "uid.txt", title: "uid.txt", description: "UID attachment placeholder.", mime: "text/plain" }
+    ];
+
+    FILE_ORDER.forEach(row => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${row.title}</h3>
+        <p class="desc">${row.description}</p>
+        <div class="btns">
+          <button data-id="${row.id}" data-action="preview">Preview</button>
+          <button data-id="${row.id}" data-action="download">Download</button>
+        </div>
+        <details>
+          <summary>Raw Preview</summary>
+          <pre id="preview-${row.id}" style="display:none; margin-top:6px; max-height:200px; overflow:auto;"></pre>
+        </details>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Helpers
+    function downloadContent(filename, content, mime) {
+      const blob = new Blob([content], { type: mime || "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function showPreview(id, content) {
+      const pre = document.getElementById('preview-' + id);
+      pre.textContent = content;
+      pre.parentElement.style.display = 'block';
+      pre.style.display = 'block';
+    }
+
+    // Event delegation for buttons
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const id = btn.getAttribute('data-id');
+      const action = btn.getAttribute('data-action');
+      const mime = (id === 'dilemma.json' || id === 'restaurant.json' || id === 'prediction.json' || id === 'index.html') ? 'application/json' : (id === 'pelican.svg' ? 'image/svg+xml' : (id === 'ashravan.txt' ? 'text/plain' : 'text/plain'));
+
+      if (action === 'download') {
+        // Fetch content from CONTENT map
+        const content = CONTENT[id];
+        const filename = id;
+        if (typeof content === 'object') {
+          // For JSON-like, stringify if not already
+          downloadContent(filename, JSON.stringify(content, null, 2), 'application/json');
+        } else {
+          downloadContent(filename, content, mime);
+        }
+      } else if (action === 'preview') {
+        const content = CONTENT[id];
+        // If it's an object, stringify for preview
+        const text = (typeof content === 'object') ? JSON.stringify(content, null, 2) : content;
+        showPreview(id, text);
+      }
+    });
+
+    // Batch download
+    document.getElementById('downloadAllBtn').addEventListener('click', function() {
+      Object.keys(CONTENT).forEach(key => {
+        // Skip if the key is not a file id
+        const content = CONTENT[key];
+        const mime = (key.endsWith('.json') || key.endsWith('.md') || key.endsWith('.txt')) ? (key.endsWith('.json') ? 'application/json' : (key.endsWith('.svg') ? 'image/svg+xml' : 'text/plain')) : 'text/plain';
+        const toDownload = (typeof content === 'object') ? JSON.stringify(content, null, 2) : content;
+        downloadContent(key, toDownload, mime);
+      });
+    });
+
+    // Expose CONTENT (for download/preview)
+    // Note: We define CONTENT in this scope earlier. The following ensures previews work:
+    // CONTENT is defined above in the global script.
+
+  </script>
+</body>
+</html>`
+    };
+
+  // Note: We assign CONTENT to the separate constant below to expose to the window if needed.
+  </script>
+</body>
+</html>
